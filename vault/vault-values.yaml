@@ -1,0 +1,10 @@
+server:
+  dev:
+    enabled: true
+  logLevel: debug
+
+ui:
+  enabled: true
+
+injector:
+  enabled: "false"

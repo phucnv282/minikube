@@ -1,0 +1,18 @@
+repositories:
+  - name: hashicorp
+    url: https://helm.releases.hashicorp.com
+
+releases:
+  - name: vault
+    chart: hashicorp/vault
+    version: 0.27.0
+    namespace: vault
+    values:
+      - vault-values.yaml
+
+  - name: vault-secrets-operator
+    chart: hashicorp/vault-secrets-operator
+    version: 0.4.2
+    namespace: vault-secrets-operator-system
+    values:
+      - vault-secrets-operator-values.yaml

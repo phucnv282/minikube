@@ -1,0 +1,7 @@
+releases:
+  - name: vault-operator
+    chart: oci://ghcr.io/bank-vaults/helm-charts/vault-operator
+    version: 1.21.2
+    namespace: bank-vaults
+    values:
+      - vault-operator-values.yaml

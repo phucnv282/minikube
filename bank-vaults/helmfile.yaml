@@ -5,3 +5,10 @@ releases:
     namespace: bank-vaults
     values:
       - vault-operator-values.yaml
+
+  - name: vault-secrets-webhook
+    chart: oci://ghcr.io/bank-vaults/helm-charts/vault-secrets-webhook
+    version: 1.21.0
+    namespace: vault-infra
+    values:
+      - vault-secrets-webhook-values.yaml

@@ -17,14 +17,12 @@ spec:
         vault.security.banzaicloud.io/vault-skip-verify: "true" # optional, skip TLS verification of the Vault server certificate
         # vault.security.banzaicloud.io/vault-tls-secret: "vault-tls" # optional, the name of the Secret where the Vault CA cert is, if not defined it is not mounted
         # vault.security.banzaicloud.io/vault-agent: "false" # optional, if true, a Vault Agent will be started to do Vault authentication, by default not needed and vault-env will do Kubernetes Service Account based Vault authentication
-        vault.security.banzaicloud.io/vault-path: "kubernetes" # optional, the Kubernetes Auth mount path in Vault the default value is "kubernetes"
+        # vault.security.banzaicloud.io/vault-path: "kubernetes" # optional, the Kubernetes Auth mount path in Vault the default value is "kubernetes"
         vault.security.banzaicloud.io/vault-auth-method: "kubernetes"
+        vault.security.banzaicloud.io/vault-env-from-path: "secret/data/accounts/aws"
     spec:
       serviceAccountName: default
       containers:
       - name: alpine
         image: alpine
-        command: ["sh", "-c", "echo $AWS_SECRET_ACCESS_KEY && echo going to sleep... && sleep 10000"]
-        env:
-        - name: AWS_SECRET_ACCESS_KEY
-          value: vault:secret/data/accounts/aws#AWS_SECRET_ACCESS_KEY
+        command: ["sh", "-c", "echo AWS_ACCESS_KEY_ID: $AWS_ACCESS_KEY_ID && echo AWS_SECRET_ACCESS_KEY: $AWS_SECRET_ACCESS_KEY && echo initContainers ready... && sleep 10000"]

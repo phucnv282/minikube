@@ -175,7 +175,7 @@ spec:
           # Allow every pod in the default namespace to use the secret kv store
           - name: bank-vaults
             bound_service_account_names: ["default", "vault-secrets-webhook"]
-            bound_service_account_namespaces: ["bank-vaults", "vswh"]
+            bound_service_account_namespaces: ["*"]
             policies: allow_secrets
             ttl: 1h
 
@@ -199,7 +199,7 @@ spec:
         data:
           data:
             AWS_ACCESS_KEY_ID: secretId
-            AWS_SECRET_ACCESS_KEY: s3cr3t
+            AWS_SECRET_ACCESS_KEY: s3cr3t111
       - type: kv
         path: secret/data/dockerrepo
         data:

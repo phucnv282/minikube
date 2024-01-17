@@ -20,6 +20,7 @@ spec:
         # vault.security.banzaicloud.io/vault-path: "kubernetes" # optional, the Kubernetes Auth mount path in Vault the default value is "kubernetes"
         vault.security.banzaicloud.io/vault-auth-method: "kubernetes"
         vault.security.banzaicloud.io/vault-env-from-path: "secret/data/accounts/aws"
+        alpha.vault.security.banzaicloud.io/reload-on-secret-change: "true"
     spec:
       serviceAccountName: default
       containers:

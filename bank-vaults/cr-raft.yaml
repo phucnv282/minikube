@@ -169,6 +169,17 @@ spec:
         rules: path "secret/*" {
           capabilities = ["create", "read", "update", "delete", "list"]
           }
+      - name: read_secrets
+        rules: path "secret/*" {
+          capabilities = ["read", "list"]
+          }
+      - name: allow_accounts_mysql
+        rules: path "secret/accounts/*" {
+            capabilities = ["create", "read", "update", "delete", "list"]
+          }
+          path "secret/mysql/*" {
+            capabilities = ["create", "read", "update", "delete", "list"]
+          }
     auth:
       - type: kubernetes
         roles:
@@ -177,6 +188,11 @@ spec:
             bound_service_account_names: ["default", "vault-secrets-webhook"]
             bound_service_account_namespaces: ["*"]
             policies: allow_secrets
+            ttl: 1h
+          - name: reloader
+            bound_service_account_names: ["vault-secrets-reloader"]
+            bound_service_account_namespaces: ["vault-infra"]
+            policies: ["read_secrets"]  # use the read_secrets policy in the reloader role
             ttl: 1h
 
     secrets:

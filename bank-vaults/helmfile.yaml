@@ -12,3 +12,10 @@ releases:
     namespace: vault-infra
     values:
       - vault-secrets-webhook-values.yaml
+
+  - name: vault-secrets-reloader
+    chart: oci://ghcr.io/bank-vaults/helm-charts/vault-secrets-reloader
+    version: 0.2.0
+    namespace: vault-infra
+    values:
+      - vault-secrets-reloader-values.yaml

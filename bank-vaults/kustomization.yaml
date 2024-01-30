@@ -3,5 +3,5 @@ kind: Kustomization
 resources:
   - https://github.com/bank-vaults/vault-operator/deploy/rbac
   - kustomization/cr-raft.yaml
-  - kustomization/vault-test.yaml
+  # - kustomization/vault-test.yaml
 namespace: bank-vaults
